@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shriya's portfolio</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/api.js" defer></script>
 </head>
 <body>
     <header>
@@ -234,6 +235,26 @@
         </p>
 
     </div>
+
+    <section class="api-section">
+
+    <div class="section-heading">
+        <p>LIVE DATA</p>
+        <h2>React op GitHub</h2>
+    </div>
+
+    <p class="api-intro">
+        Hieronder worden actuele gegevens van het React-project
+        opgehaald via de GitHub API.
+    </p>
+
+    <p id="api-status" class="api-status">
+        Gegevens laden...
+    </p>
+
+    <div id="api-data" class="api-data"></div>
+
+</section>
 </footer>
 </main>
 </body>
