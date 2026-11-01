@@ -129,7 +129,7 @@ function createFilterButtons() {
 
     const filterContainer = document.createElement("div");
 
-    filterContainer.classList.add("hero-buttons");
+    filterContainer.classList.add("project-filters");
 
 
     const filters = [
@@ -148,7 +148,7 @@ function createFilterButtons() {
 
         button.textContent = filter.text;
 
-        button.classList.add("btn", "secondary-btn");
+        button.classList.add("filter-btn");
 
 
         button.addEventListener("click", () => {
