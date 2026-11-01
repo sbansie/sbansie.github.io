@@ -1,6 +1,6 @@
-Portfolio API:
+Portfolio API;
 
-Technieken
+Gebruikte technieken
 
 .NET 10
 
@@ -14,71 +14,31 @@ Swagger / Swashbuckle
 
 API-structuur
 
-Ik gebruik Controllers met een lagenstructuur:
+Ik gebruik Controllers met lagen.
 
-Controllers: verwerken HTTP-requests en responses.
+De backend is verdeeld in:
 
-Services: bevatten de applicatielogica en DTO-mapping.
+Controllers - verwerken HTTP-requests en responses.
 
-Data: bevat PortfolioDbContext voor communicatie met SQL Server.
+Services - bevatten de applicatielogica en DTO-mapping.
 
-Models: bevatten de database-entiteiten.
+Data - bevat PortfolioDbContext voor de database.
 
-DTOs: bepalen welke gegevens via de API worden ontvangen en teruggestuurd.
+Models - bevatten de database-entiteiten.
+
+DTOs - bepalen welke gegevens de API ontvangt en terugstuurt.
+
+De controllers gebruiken de DbContext niet rechtstreeks. Hiervoor worden services gebruikt.
 
 Functionaliteiten
 
-De API bevat volledige CRUD voor:
+De API ondersteunt volledige CRUD voor:
 
 Projects
 
 Blogposts
 
-Beschikbare acties:
-
-GET
-
-GET op id
-
-POST
-
-PUT
-
-DELETE
-
-Database
-
-De applicatie gebruikt SQL Server met Entity Framework Core.
-
-De connection string staat in appsettings.json.
-
-De database is aangemaakt met EF Core migrations:
-
-dotnet ef migrations add InitialCreate
-dotnet ef database update
-
-Hierdoor blijven gegevens opgeslagen nadat de applicatie opnieuw wordt gestart.
-
-Project starten
-
-Ga naar de map PortfolioApi en voer uit:
-
-dotnet restore
-dotnet run
-
-De terminal toont daarna bijvoorbeeld:
-
-Now listening on: http://localhost:5132
-
-Swagger is vervolgens beschikbaar via:
-
-http://localhost:5132/swagger
-
-Het poortnummer kan per computer verschillen.
-
-Endpoints
-
-Projects
+Voor beide zijn de volgende endpoints aanwezig:
 
 GET     /api/Projects
 GET     /api/Projects/{id}
@@ -86,28 +46,68 @@ POST    /api/Projects
 PUT     /api/Projects/{id}
 DELETE  /api/Projects/{id}
 
-Blogposts
-
 GET     /api/Blogposts
 GET     /api/Blogposts/{id}
 POST    /api/Blogposts
 PUT     /api/Blogposts/{id}
 DELETE  /api/Blogposts/{id}
 
-Testen
+Database
 
-De endpoints zijn getest via Swagger UI.
+De applicatie gebruikt SQL Server met Entity Framework Core.
 
-Hierbij heb ik gecontroleerd:
+De connection string staat in:
 
-POST maakt nieuwe data aan.
+appsettings.json
 
-GET haalt de data op.
+De database wordt aangemaakt met EF Core migrations:
 
-PUT past bestaande data aan.
+dotnet ef migrations add InitialCreate
+dotnet ef database update
 
-Data blijft bestaan na opnieuw starten van de API.
+De database heet:
 
-DELETE verwijdert de data.
+PortfolioDb
 
-GET op een verwijderd of onbekend id geeft 404 Not Found.
+De gegevens blijven opgeslagen wanneer de API opnieuw wordt gestart.
+
+Project starten
+
+Ga in de terminal naar de map:
+
+PortfolioApi
+
+Voer daarna uit:
+
+dotnet restore
+dotnet run
+
+De terminal toont daarna een adres, bijvoorbeeld:
+
+http://localhost:5132
+
+Het poortnummer kan verschillen.
+
+Swagger
+
+Swagger wordt gebruikt om de API te testen.
+
+Open na het starten van de API:
+
+http://localhost:PORT/swagger
+
+Via Swagger heb ik POST, GET, PUT en DELETE getest voor zowel Projects als Blogposts.
+
+Ook heb ik gecontroleerd dat:
+
+gegevens na een herstart blijven bestaan;
+
+een verwijderd of onbekend id een 404 Not Found teruggeeft.
+
+Database migrations
+
+De eerste migration van dit project heet:
+
+InitialCreate
+
+Hiermee worden de tabellen Projects en Blogposts in SQL Server aangemaakt.
