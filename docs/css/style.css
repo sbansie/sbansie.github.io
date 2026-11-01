@@ -504,16 +504,24 @@ footer {
 }
 
 .project-filters {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding: 0 30px;
+
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin-bottom: 30px;
 }
 
-.projects-section .projects-page {
+.projects-section {
     max-width: none;
     margin: 0;
     padding: 0;
+}
+
+.projects-page {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .filter-btn,
