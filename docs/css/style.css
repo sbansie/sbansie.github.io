@@ -510,6 +510,12 @@ footer {
     margin-bottom: 30px;
 }
 
+.projects-section .projects-page {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
 .filter-btn,
 .blog-toggle {
     font: inherit;
